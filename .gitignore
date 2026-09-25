@@ -114,3 +114,6 @@ client/public/__manus__/version.json
 # Manus
 .manus-logs/
 .webdev/
+
+# Gerado no deploy por scripts/fetch-content.mjs
+client/public/data/

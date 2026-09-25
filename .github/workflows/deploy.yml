@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  schedule:
+    # 05:30 UTC = 00:30 no Panamá: atualiza notícias e "un día como hoy"
+    - cron: "30 5 * * *"
 
 permissions:
   contents: read
@@ -25,6 +28,7 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      - run: node scripts/fetch-content.mjs
       - run: pnpm exec vite build
       - uses: actions/upload-pages-artifact@v3
         with:

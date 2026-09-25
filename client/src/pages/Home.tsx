@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { ChevronLeft, ChevronRight, MapPin, Mail, Phone, Code2, Cloud, BarChart3, Shield, X, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { TechSections } from "@/components/TechSections";
 
 /**
  * Design System: Minimalismo Corporativo Moderno
@@ -1119,6 +1120,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <TechSections language={language} />
 
       {/* Contact Section */}
       <section id="contacto" className="py-16 md:py-24 bg-white">
