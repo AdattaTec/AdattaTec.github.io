@@ -49,7 +49,7 @@ interface Service {
 }
 
 // Arte completa do produto (com lista de recursos), exibida no modal de detalhe
-const fullImage = (image: string) => image.replace(/\.webp$/, "-full.webp");
+const fullImage = (image: string) => image.replace(/\.webp(\?|$)/, "-full.webp$1");
 
 const translations = {
   es: {
@@ -209,7 +209,7 @@ const products: Product[] = [
     subtitleEn: "Payroll Management System",
     descriptionEs: "Gestión completa de nómina y recursos humanos con administración de personal, vacaciones, ausencias y reportes analíticos.",
     descriptionEn: "Complete payroll and human resources management with personnel administration, vacations, absences, and analytical reports.",
-    image: "/images/produtos/payroll.webp",
+    image: "/images/produtos/payroll.webp?v=2",
     featuresEs: [
       "Administración de personal",
       "Headcount",
@@ -255,7 +255,7 @@ const products: Product[] = [
     subtitleEn: "Personnel Management System",
     descriptionEs: "Control integral de personal con gestión de datos laborales, control de acceso, asistencia y entrenamientos en tiempo real.",
     descriptionEn: "Comprehensive personnel control with labor data management, access control, attendance, and real-time training.",
-    image: "/images/produtos/sisgep.webp",
+    image: "/images/produtos/sisgep.webp?v=2",
     featuresEs: [
       "Datos Personales y Laborales",
       "Control y Organigrama de Encargados & Cuadrillas",
@@ -307,7 +307,7 @@ const products: Product[] = [
     subtitleEn: "Machinery & Equipment Control",
     descriptionEs: "Control de maquinaria y equipos de obra: horas trabajadas, paradas, consumo de combustible y eficiencia operacional en tiempo real.",
     descriptionEn: "Construction machinery and equipment control: worked hours, downtime, fuel consumption and real-time operational efficiency.",
-    image: "/images/produtos/acm.webp",
+    image: "/images/produtos/acm.webp?v=2",
     featuresEs: [
       "Reducción de costos por medio de monitoreo de las horas de equipos",
       "Controle de productividad de maquinaria",
