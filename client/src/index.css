@@ -176,3 +176,10 @@
     }
   }
 }
+/* Menu fixo (h-16): âncoras não ficam escondidas atrás dele */
+html {
+  scroll-behavior: smooth;
+}
+section[id] {
+  scroll-margin-top: 4rem;
+}

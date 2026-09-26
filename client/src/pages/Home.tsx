@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { ChevronLeft, ChevronRight, MapPin, Mail, Phone, Code2, Cloud, BarChart3, Shield, X, MessageCircle } from "lucide-react";
+import { ChevronLeft, ChevronRight, MapPin, Mail, Phone, Code2, Cloud, BarChart3, Shield, X, MessageCircle, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { TechSections } from "@/components/TechSections";
 
@@ -733,7 +733,41 @@ export default function Home() {
   const productCarouselRef = useRef<HTMLDivElement>(null);
   const serviceCarouselRef = useRef<HTMLDivElement>(null);
   const t = translations[language];
-  const itemsPerView = 3;
+  const [menuOpen, setMenuOpen] = useState(false);
+  const navLinks: [string, string][] = [
+    ["#inicial", t.nav.inicial],
+    ["#productos", t.nav.productos],
+    ["#servicios", t.nav.servicios],
+    ["#sobre", t.nav.sobre],
+    ["#clientes", t.nav.clientes],
+    ["#noticias", t.nav.noticias],
+    ["#contacto", t.nav.contacto],
+  ];
+  const [itemsPerView, setItemsPerView] = useState(3);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const update = () => setItemsPerView(mq.matches ? 3 : 1);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
+  // Rola até o card de índice "index" (funciona com 1 ou 3 cards visíveis)
+  const scrollToCard = (carousel: HTMLDivElement | null, index: number) => {
+    const card = carousel?.children[index] as HTMLElement | undefined;
+    if (carousel && card) carousel.scrollTo({ left: card.offsetLeft - carousel.offsetLeft, behavior: "smooth" });
+  };
+
+  // No celular o carrossel é deslizado com o dedo: mantém os indicadores em sincronia
+  const swipingRef = useRef(false);
+  const syncIndex = (carousel: HTMLDivElement, setIndex: (i: number) => void) => {
+    const first = carousel.children[0] as HTMLElement | undefined;
+    if (!first || itemsPerView !== 1) return;
+    swipingRef.current = true;
+    setIndex(Math.round(carousel.scrollLeft / (first.offsetWidth + 24)));
+    requestAnimationFrame(() => (swipingRef.current = false));
+  };
 
   const handleRequestDemo = (itemName: string) => {
     setSelectedProduct(null);
@@ -770,26 +804,14 @@ export default function Home() {
   };
 
   useEffect(() => {
-    const productCarousel = productCarouselRef.current;
-    if (productCarousel) {
-      const scrollAmount = productIndex * (productCarousel.offsetWidth / itemsPerView);
-      productCarousel.scrollTo({
-        left: scrollAmount,
-        behavior: "smooth",
-      });
-    }
-  }, [productIndex]);
+    if (swipingRef.current) return;
+    scrollToCard(productCarouselRef.current, productIndex);
+  }, [productIndex, itemsPerView]);
 
   useEffect(() => {
-    const serviceCarousel = serviceCarouselRef.current;
-    if (serviceCarousel) {
-      const scrollAmount = serviceIndex * (serviceCarousel.offsetWidth / itemsPerView);
-      serviceCarousel.scrollTo({
-        left: scrollAmount,
-        behavior: "smooth",
-      });
-    }
-  }, [serviceIndex]);
+    if (swipingRef.current) return;
+    scrollToCard(serviceCarouselRef.current, serviceIndex);
+  }, [serviceIndex, itemsPerView]);
 
   return (
     <div className="min-h-screen bg-white">
@@ -806,27 +828,11 @@ export default function Home() {
             </div>
           </div>
           <div className="hidden md:flex items-center gap-8">
-            <a href="#inicial" className="text-sm text-foreground hover:text-primary transition-colors">
-              {t.nav.inicial}
-            </a>
-            <a href="#productos" className="text-sm text-foreground hover:text-primary transition-colors">
-              {t.nav.productos}
-            </a>
-            <a href="#servicios" className="text-sm text-foreground hover:text-primary transition-colors">
-              {t.nav.servicios}
-            </a>
-            <a href="#sobre" className="text-sm text-foreground hover:text-primary transition-colors">
-              {t.nav.sobre}
-            </a>
-            <a href="#clientes" className="text-sm text-foreground hover:text-primary transition-colors">
-              {t.nav.clientes}
-            </a>
-            <a href="#noticias" className="text-sm text-foreground hover:text-primary transition-colors">
-              {t.nav.noticias}
-            </a>
-            <a href="#contacto" className="text-sm text-foreground hover:text-primary transition-colors">
-              {t.nav.contacto}
-            </a>
+            {navLinks.map(([href, label]) => (
+              <a key={href} href={href} className="text-sm text-foreground hover:text-primary transition-colors">
+                {label}
+              </a>
+            ))}
           </div>
           <div className="flex gap-2">
             <button
@@ -849,8 +855,32 @@ export default function Home() {
             >
               EN
             </button>
+            <button
+              onClick={() => setMenuOpen((o) => !o)}
+              className="md:hidden p-1 text-primary"
+              aria-label="Menu"
+              aria-expanded={menuOpen}
+            >
+              {menuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </div>
         </div>
+        {menuOpen && (
+          <div className="md:hidden border-t border-border bg-white">
+            <div className="container py-2 flex flex-col">
+              {navLinks.map(([href, label]) => (
+                <a
+                  key={href}
+                  href={href}
+                  onClick={() => setMenuOpen(false)}
+                  className="py-3 text-foreground hover:text-primary border-b border-border last:border-0"
+                >
+                  {label}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* Hero Section */}
@@ -858,8 +888,7 @@ export default function Home() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('https://d2xsxph8kpxj0f.cloudfront.net/310519663068177378/CJib2MYiuaceyinjhLqJk4/hero-adatta-oAERWQAmse4RxrGZDAdp59.webp')`,
-            backgroundAttachment: "fixed",
+            backgroundImage: "url('/images/hero.webp')",
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-transparent" />
@@ -873,11 +902,11 @@ export default function Home() {
               {t.hero.subtitle}
             </p>
             <div className="flex gap-4">
-              <Button className="bg-accent hover:bg-accent/90 text-white">
-                {t.hero.learnMore}
+              <Button asChild className="bg-accent hover:bg-accent/90 text-white">
+                <a href="#productos">{t.hero.learnMore}</a>
               </Button>
-              <Button variant="outline" className="border-white text-white hover:bg-white/10">
-                {t.hero.contact}
+              <Button asChild variant="outline" className="border-white text-white hover:bg-white/10 bg-transparent">
+                <a href="#contacto">{t.hero.contact}</a>
               </Button>
             </div>
           </div>
@@ -897,12 +926,13 @@ export default function Home() {
           <div className="relative">
             <div
               ref={productCarouselRef}
-              className="flex gap-6 overflow-x-hidden scroll-smooth"
+              onScroll={(e) => syncIndex(e.currentTarget, setProductIndex)}
+              className="flex gap-6 overflow-x-auto md:overflow-x-hidden snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             >
               {products.map((product) => (
                 <div
                   key={product.id}
-                  className="flex-shrink-0 w-full md:w-1/3 bg-card rounded-lg p-8 border border-border hover:shadow-lg transition-shadow duration-300"
+                  className="snap-start flex-shrink-0 w-full md:w-[calc((100%-3rem)/3)] bg-card rounded-lg p-6 md:p-8 border border-border hover:shadow-lg transition-shadow duration-300"
                 >
                   {product.image && (
                     <button type="button" onClick={() => setSelectedProduct(product)} className="block w-full mb-4 overflow-hidden rounded-lg">
@@ -910,7 +940,7 @@ export default function Home() {
                         src={product.image}
                         alt={language === "es" ? product.nameEs : product.nameEn}
                         loading="lazy"
-                        className="w-full aspect-square object-cover hover:scale-105 transition-transform duration-300"
+                        className="w-full aspect-[1254/860] object-cover hover:scale-105 transition-transform duration-300"
                       />
                     </button>
                   )}
@@ -938,14 +968,14 @@ export default function Home() {
             {/* Carousel Controls */}
             <button
               onClick={handleProductPrev}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 md:-translate-x-20 bg-primary hover:bg-primary/90 text-white rounded-full p-3 transition-colors"
+              className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 md:-translate-x-20 bg-primary hover:bg-primary/90 text-white rounded-full p-3 transition-colors"
               aria-label="Previous products"
             >
               <ChevronLeft size={24} />
             </button>
             <button
               onClick={handleProductNext}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 md:translate-x-20 bg-primary hover:bg-primary/90 text-white rounded-full p-3 transition-colors"
+              className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 md:translate-x-20 bg-primary hover:bg-primary/90 text-white rounded-full p-3 transition-colors"
               aria-label="Next products"
             >
               <ChevronRight size={24} />
@@ -983,14 +1013,15 @@ export default function Home() {
           <div className="relative">
             <div
               ref={serviceCarouselRef}
-              className="flex gap-6 overflow-x-hidden scroll-smooth"
+              onScroll={(e) => syncIndex(e.currentTarget, setServiceIndex)}
+              className="flex gap-6 overflow-x-auto md:overflow-x-hidden snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             >
               {services.map((service) => {
                 const Icon = service.icon;
                 return (
                   <div
                     key={service.id}
-                    className="flex-shrink-0 w-full md:w-1/3 bg-card rounded-lg p-8 border border-border hover:shadow-lg transition-shadow duration-300"
+                    className="snap-start flex-shrink-0 w-full md:w-[calc((100%-3rem)/3)] bg-card rounded-lg p-6 md:p-8 border border-border hover:shadow-lg transition-shadow duration-300"
                   >
                     <div className="relative w-full aspect-[4/3] rounded-lg mb-4 overflow-hidden bg-gradient-to-br from-[#0a2a66] via-[#0d47c4] to-[#2f80ff] flex items-center justify-center">
                       <div className="absolute -right-10 -bottom-10 w-40 h-40 rounded-full bg-white/10" />
@@ -1018,14 +1049,14 @@ export default function Home() {
             {/* Carousel Controls */}
             <button
               onClick={handleServicePrev}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 md:-translate-x-20 bg-primary hover:bg-primary/90 text-white rounded-full p-3 transition-colors"
+              className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 md:-translate-x-20 bg-primary hover:bg-primary/90 text-white rounded-full p-3 transition-colors"
               aria-label="Previous services"
             >
               <ChevronLeft size={24} />
             </button>
             <button
               onClick={handleServiceNext}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 md:translate-x-20 bg-primary hover:bg-primary/90 text-white rounded-full p-3 transition-colors"
+              className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 md:translate-x-20 bg-primary hover:bg-primary/90 text-white rounded-full p-3 transition-colors"
               aria-label="Next services"
             >
               <ChevronRight size={24} />
@@ -1100,7 +1131,7 @@ export default function Home() {
             </div>
             <div className="hidden md:block">
               <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663068177378/CJib2MYiuaceyinjhLqJk4/services-bg-8BY4uo6RQVCyM6U62FHP7t.webp"
+                src="/images/sobre.webp"
                 alt="Sobre Adatta"
                 className="rounded-lg shadow-lg"
               />
