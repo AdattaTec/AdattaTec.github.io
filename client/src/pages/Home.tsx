@@ -6,6 +6,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { TechSections } from "@/components/TechSections";
 import { Asesoria } from "@/components/Asesoria";
+import { Trayectoria } from "@/components/Trayectoria";
 
 /**
  * Design System: Minimalismo Corporativo Moderno
@@ -58,6 +59,7 @@ const translations = {
       asesoria: "Asesoría",
       servicios: "Servicios",
       sobre: "Sobre",
+      trayectoria: "Trayectoria",
       clientes: "Clientes",
       noticias: "Novedades",
       contacto: "Contacto",
@@ -79,18 +81,24 @@ const translations = {
     },
     about: {
       title: "Sobre Adatta",
-      description1: "Adatta Tecnología llega a la ciudad de Panamá en el 2013. Es una empresa de tecnología especializada en el Desarrollo de Software, Consultoría, Asesoría y Proyectos de Infraestructura para soluciones administrativas.",
-      description2: "Adatta Tecnología busca calidad total en sus productos y servicios para atender las necesidades y expectativas de nuestros clientes. Contamos con un cuadro de profesionales especializados.",
-      quality: "Calidad",
-      qualityDesc: "Productos y servicios de excelencia",
-      reliability: "Confiabilidad",
-      reliabilityDesc: "Soluciones seguras y estables",
-      professionalism: "Profesionalismo",
-      professionalismDesc: "Equipo especializado y dedicado",
+      paragraphs: [
+        "ADATTA Tecnología es una empresa con sede en Panamá, especializada en soluciones tecnológicas y servicios para construcción, infraestructura y gestión de proyectos.",
+        "Desarrollamos e implementamos soluciones que conectan campo, procesos y gestión, integrando información de costos, presupuesto, recursos humanos, subcontratos, producción, equipos, calidad y documentación.",
+        "Nuestra experiencia combina conocimiento de los procesos reales de obra con desarrollo de software, bases de datos, integración de sistemas, Business Intelligence y automatización, transformando datos operacionales en información confiable para Project Controls, toma de decisiones y soporte a Claims.",
+        "Trabajamos junto a nuestros clientes para adaptar cada solución a la realidad de sus proyectos, buscando mejorar el control, la trazabilidad y la disponibilidad de la información a lo largo de todo su ciclo de vida.",
+      ],
+      values: [
+        { title: "Calidad", subtitle: "Soluciones orientadas a resultados", text: "Tecnología y servicios adaptados a las necesidades reales de cada proyecto." },
+        { title: "Confiabilidad", subtitle: "Información segura y trazable", text: "Datos consistentes y disponibles para respaldar el control y la toma de decisiones." },
+        { title: "Profesionalismo", subtitle: "Experiencia de obra + tecnología", text: "Conocimiento multidisciplinario aplicado a construcción, Project Controls y gestión de datos." },
+      ],
     },
     mission: {
       title: "Misión",
-      description: "Desarrollar Software y prestar servicios para controles operacionales y gerenciales, buscando un ambiente funcional y eficaz que atienda las necesidades tecnológicas y que proporcionen de forma rápida y confiable las informaciones para control y toma de decisiones, creando un relacionamiento de largo plazo y preservándolo de forma ética.",
+      paragraphs: [
+        "Desarrollar soluciones tecnológicas y prestar servicios especializados que permitan capturar, integrar y transformar los datos de los proyectos en información confiable para la gestión.",
+        "Conectamos tecnología y conocimiento de obra para fortalecer el control operacional y gerencial, facilitar la toma de decisiones y preservar la trazabilidad e historia de cada proyecto.",
+      ],
     },
     clients: {
       title: "Principales Clientes",
@@ -124,6 +132,7 @@ const translations = {
       asesoria: "Advisory",
       servicios: "Services",
       sobre: "About",
+      trayectoria: "Track record",
       clientes: "Clients",
       noticias: "News",
       contacto: "Contact",
@@ -145,18 +154,24 @@ const translations = {
     },
     about: {
       title: "About Adatta",
-      description1: "Adatta Technology arrived in Panama City in 2013. It is a technology company specialized in Software Development, Consulting, Advisory and Infrastructure Projects for administrative solutions.",
-      description2: "Adatta Technology seeks total quality in its products and services to meet the needs and expectations of our clients. We have a team of specialized professionals.",
-      quality: "Quality",
-      qualityDesc: "Excellence in products and services",
-      reliability: "Reliability",
-      reliabilityDesc: "Secure and stable solutions",
-      professionalism: "Professionalism",
-      professionalismDesc: "Specialized and dedicated team",
+      paragraphs: [
+        "ADATTA Tecnología is a Panama-based company specialized in technology solutions and services for construction, infrastructure and project management.",
+        "We develop and implement solutions that connect the field, processes and management, integrating information on costs, budget, human resources, subcontracts, production, equipment, quality and documentation.",
+        "Our experience combines knowledge of real construction processes with software development, databases, systems integration, Business Intelligence and automation, turning operational data into reliable information for Project Controls, decision-making and Claims support.",
+        "We work alongside our clients to adapt each solution to the reality of their projects, improving control, traceability and the availability of information throughout their entire life cycle.",
+      ],
+      values: [
+        { title: "Quality", subtitle: "Results-oriented solutions", text: "Technology and services adapted to the real needs of each project." },
+        { title: "Reliability", subtitle: "Secure, traceable information", text: "Consistent, available data to support control and decision-making." },
+        { title: "Professionalism", subtitle: "Construction experience + technology", text: "Multidisciplinary knowledge applied to construction, Project Controls and data management." },
+      ],
     },
     mission: {
       title: "Mission",
-      description: "Develop Software and provide services for operational and managerial controls, seeking a functional and effective environment that meets technological needs and provides fast and reliable information for control and decision-making, creating a long-term relationship and preserving it ethically.",
+      paragraphs: [
+        "To develop technology solutions and provide specialized services that capture, integrate and transform project data into reliable information for management.",
+        "We connect technology and construction know-how to strengthen operational and managerial control, support decision-making and preserve the traceability and history of every project.",
+      ],
     },
     clients: {
       title: "Main Clients",
@@ -198,7 +213,7 @@ const products: Product[] = [
     featuresEs: [
       "Administración de personal",
       "Headcount",
-      "Confección e impresión de correos",
+      "Confección e impresión de carnés",
       "Administración de Recursos Humanos",
       "Históricos",
       "Vacaciones",
@@ -215,7 +230,7 @@ const products: Product[] = [
     featuresEn: [
       "Personnel administration",
       "Headcount",
-      "Email creation and printing",
+      "ID badge design and printing",
       "Human Resources management",
       "Historical data",
       "Vacations",
@@ -224,7 +239,7 @@ const products: Product[] = [
       "Training",
       "Analytical and Management reports",
       "Alert configuration",
-      "Template D1",
+      "Planilla 03",
       "Pre-labor",
       "Sick fund",
       "ISR calculation with projection"
@@ -736,6 +751,7 @@ export default function Home() {
     ["#asesoria", t.nav.asesoria],
     ["#servicios", t.nav.servicios],
     ["#sobre", t.nav.sobre],
+    ["#trayectoria", t.nav.trayectoria],
     ["#clientes", t.nav.clientes],
     ["#noticias", t.nav.noticias],
     ["#contacto", t.nav.contacto],
@@ -1024,61 +1040,53 @@ export default function Home() {
       {/* About Section */}
       <section id="sobre" className="py-16 md:py-24 bg-white">
         <div className="container">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
+          <div className="grid lg:grid-cols-5 gap-10 lg:gap-12">
+            <div className="lg:col-span-3">
               <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6" style={{ fontFamily: "Playfair Display" }}>
                 {t.about.title}
               </h2>
-              <p className="text-foreground mb-4 leading-relaxed">
-                {t.about.description1}
-              </p>
-              <p className="text-foreground mb-8 leading-relaxed">
-                {t.about.description2}
-              </p>
-              
-              <div className="mb-8 p-6 bg-secondary/30 rounded-lg border border-border">
+              {t.about.paragraphs.map((p) => (
+                <p key={p} className="text-foreground mb-4 leading-relaxed">
+                  {p}
+                </p>
+              ))}
+
+              <div className="mt-8 p-6 bg-secondary/30 rounded-lg border border-border">
                 <h3 className="text-xl font-semibold text-primary mb-3" style={{ fontFamily: "Playfair Display" }}>
                   {t.mission.title}
                 </h3>
-                <p className="text-foreground text-sm leading-relaxed">
-                  {t.mission.description}
-                </p>
+                {t.mission.paragraphs.map((p) => (
+                  <p key={p} className="text-foreground text-sm leading-relaxed mb-2 last:mb-0">
+                    {p}
+                  </p>
+                ))}
               </div>
+            </div>
+            <div className="lg:col-span-2">
+              <a href="/images/servicios-integrados.webp" target="_blank" rel="noopener noreferrer" className="block lg:sticky lg:top-24">
+                <img
+                  src="/images/servicios-integrados.webp"
+                  alt={language === "es" ? "Servicios integrados para proyectos" : "Integrated project services"}
+                  loading="lazy"
+                  className="w-full max-w-md mx-auto rounded-lg shadow-lg"
+                />
+              </a>
+            </div>
+          </div>
 
-              <div className="space-y-4">
-                <div className="flex gap-4">
-                  <div className="w-1 bg-accent flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold text-foreground mb-1">{t.about.quality}</h3>
-                    <p className="text-sm text-muted-foreground">{t.about.qualityDesc}</p>
-                  </div>
-                </div>
-                <div className="flex gap-4">
-                  <div className="w-1 bg-accent flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold text-foreground mb-1">{t.about.reliability}</h3>
-                    <p className="text-sm text-muted-foreground">{t.about.reliabilityDesc}</p>
-                  </div>
-                </div>
-                <div className="flex gap-4">
-                  <div className="w-1 bg-accent flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold text-foreground mb-1">{t.about.professionalism}</h3>
-                    <p className="text-sm text-muted-foreground">{t.about.professionalismDesc}</p>
-                  </div>
-                </div>
+          <div className="grid md:grid-cols-3 gap-6 mt-12">
+            {t.about.values.map((v) => (
+              <div key={v.title} className="rounded-lg border border-border p-6 border-t-4 border-t-accent">
+                <h3 className="text-lg font-semibold text-primary">{v.title}</h3>
+                <p className="text-sm font-medium text-accent mb-2">{v.subtitle}</p>
+                <p className="text-sm text-muted-foreground">{v.text}</p>
               </div>
-            </div>
-            <div className="hidden md:block">
-              <img
-                src="/images/sobre.webp"
-                alt="Sobre Adatta"
-                className="rounded-lg shadow-lg"
-              />
-            </div>
+            ))}
           </div>
         </div>
       </section>
+
+      <Trayectoria language={language} />
 
       {/* Clients Section */}
       <section id="clientes" className="py-16 md:py-24 bg-secondary/30">

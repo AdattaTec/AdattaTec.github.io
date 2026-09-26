@@ -85,6 +85,7 @@ const offers: Offer[] = [
   {
     id: "planilla",
     image: "/images/asesoria/planilla.webp",
+    fullImage: { es: "/images/asesoria/planilla-full.webp", en: "/images/asesoria/planilla-full.webp" },
     name: { es: "Outsourcing de Nómina", en: "Payroll Outsourcing" },
     tagline: { es: "Nómina como servicio.", en: "Payroll as a service." },
     description: {
