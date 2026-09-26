@@ -1,5 +1,11 @@
 # Changelog — Site institucional Adatta (www.adattati.com)
 
+## 2026-09-26 — Produtos: novas artes e nova ordem
+
+- Artes novas de **PayRoll**, **SisGep** e **ACM** (origem: `adatta-site-com-imagens/Novas imgs`):
+  card = recorte 1254×860 reduzido para 840×576; detalhe (`-full`) = arte quadrada completa 1254×1254.
+- Ordem dos produtos: PayRoll, SisGep, ACM, Tools, Daily, Tracking, Contract, Cost, Budget, INSP, Lab, Doctor.
+
 ## 2026-09-25 — Publicação e reformulação
 
 ### Publicação
