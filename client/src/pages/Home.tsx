@@ -1,7 +1,11 @@
 import { useState, useRef, useEffect } from "react";
-import { ChevronLeft, ChevronRight, MapPin, Mail, Phone, Code2, Cloud, BarChart3, Shield, X, MessageCircle, Menu } from "lucide-react";
+import {
+  ArrowLeftRight, BarChart3, ChevronLeft, ChevronRight, ClipboardCheck, Cloud, Code2, Cpu, DatabaseZap, GraduationCap,
+  Headphones, Mail, MapPin, Menu, MessageCircle, MessagesSquare, Phone, Rocket, Settings, X, type LucideIcon,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { TechSections } from "@/components/TechSections";
+import { Asesoria } from "@/components/Asesoria";
 
 /**
  * Design System: Minimalismo Corporativo Moderno
@@ -36,14 +40,11 @@ interface Product {
 }
 
 interface Service {
-  id: number;
+  icon: LucideIcon;
   nameEs: string;
   nameEn: string;
-  descriptionEs: string;
-  descriptionEn: string;
-  detailEs: string;
-  detailEn: string;
-  icon: any;
+  scopeEs: string;
+  scopeEn: string;
 }
 
 // Arte completa do produto (com lista de recursos), exibida no modal de detalhe
@@ -54,6 +55,7 @@ const translations = {
     nav: {
       inicial: "Página Inicial",
       productos: "Productos",
+      asesoria: "Asesoría",
       servicios: "Servicios",
       sobre: "Sobre",
       clientes: "Clientes",
@@ -119,6 +121,7 @@ const translations = {
     nav: {
       inicial: "Home",
       productos: "Products",
+      asesoria: "Advisory",
       servicios: "Services",
       sobre: "About",
       clientes: "Clients",
@@ -660,46 +663,42 @@ const products: Product[] = [
 ];
 
 const services: Service[] = [
-  {
-    id: 1,
-    nameEs: "Desarrollo de Software",
-    nameEn: "Software Development",
-    descriptionEs: "Creación de aplicaciones personalizadas y escalables para tu negocio.",
-    descriptionEn: "Creation of customized and scalable applications for your business.",
-    detailEs: "Desarrollamos soluciones de software a medida, desde aplicaciones web hasta sistemas empresariales complejos. Utilizamos tecnologías modernas y mejores prácticas de desarrollo.",
-    detailEn: "We develop custom software solutions, from web applications to complex enterprise systems. We use modern technologies and development best practices.",
-    icon: Code2,
-  },
-  {
-    id: 2,
-    nameEs: "Soluciones en Nube",
-    nameEn: "Cloud Solutions",
-    descriptionEs: "Migración y gestión de infraestructura en la nube.",
-    descriptionEn: "Cloud infrastructure migration and management.",
-    detailEs: "Facilitamos la migración segura de tus sistemas a la nube, proporcionando gestión completa, escalabilidad y seguridad de datos.",
-    detailEn: "We facilitate secure migration of your systems to the cloud, providing complete management, scalability, and data security.",
-    icon: Cloud,
-  },
-  {
-    id: 3,
-    nameEs: "Consultoría Estratégica",
-    nameEn: "Strategic Consulting",
-    descriptionEs: "Planificación de TI y transformación digital.",
-    descriptionEn: "IT planning and digital transformation.",
-    detailEs: "Asesoramos a empresas en la definición de estrategias tecnológicas alineadas con sus objetivos de negocio, maximizando ROI.",
-    detailEn: "We advise companies on defining technology strategies aligned with their business objectives, maximizing ROI.",
-    icon: BarChart3,
-  },
-  {
-    id: 4,
-    nameEs: "Seguridad y Calidad",
-    nameEn: "Security and Quality",
-    descriptionEs: "Protección de datos y compliance normativo.",
-    descriptionEn: "Data protection and regulatory compliance.",
-    detailEs: "Implementamos medidas de seguridad robustas y aseguramos cumplimiento normativo para proteger tus activos digitales.",
-    detailEn: "We implement robust security measures and ensure regulatory compliance to protect your digital assets.",
-    icon: Shield,
-  },
+  { icon: MessagesSquare, nameEs: "Consultoría, diagnóstico y diseño de soluciones", nameEn: "Solution consulting, assessment and design",
+    scopeEs: "Levantamiento de procesos operativos y administrativos, identificación de controles críticos, flujos de información, modelos de datos e indicadores de gestión.",
+    scopeEn: "Assessment of operational and administrative processes, identification of critical controls, information flows, data models and management indicators." },
+  { icon: Settings, nameEs: "Configuración y customización de soluciones Adatta", nameEn: "Configuration and customization of Adatta solutions",
+    scopeEs: "Parametrización y adaptación de productos Adatta a los procesos, reglas de negocio, flujos, reportes, perfiles y necesidades específicas de cada cliente o proyecto.",
+    scopeEn: "Parameterization and adaptation of Adatta products to processes, business rules, workflows, reports, profiles and the specific needs of each client or project." },
+  { icon: Code2, nameEs: "Desarrollo de soluciones y módulos específicos", nameEn: "Development of solutions and specific modules",
+    scopeEs: "Desarrollo de aplicaciones web, desktop y móviles, módulos complementarios, interfaces y automatizaciones para requerimientos específicos no cubiertos por las soluciones estándar.",
+    scopeEn: "Development of web, desktop and mobile applications, complementary modules, interfaces and automations for specific requirements not covered by standard solutions." },
+  { icon: ArrowLeftRight, nameEs: "Integración de sistemas y datos", nameEn: "Systems and data integration",
+    scopeEs: "Integración con ERP, nómina, costos, BI y otras plataformas mediante APIs, servicios web, archivos, ETL y bases de datos.",
+    scopeEn: "Integration with ERP, payroll, costs, BI and other platforms through APIs, web services, files, ETL and databases." },
+  { icon: Cpu, nameEs: "Integración de dispositivos, IoT y captura automática", nameEn: "Device, IoT and automated data capture integration",
+    scopeEs: "Integración con lectores faciales y biométricos, controles de acceso, colectores de datos, sensores de maquinaria, dispositivos IoT, plantas, balanzas y otras fuentes de campo para captura automática, sincronización, monitoreo y trazabilidad.",
+    scopeEn: "Integration with facial and biometric readers, access controls, data collectors, machinery sensors, IoT devices, plants, scales and other field sources for automatic capture, synchronization, monitoring and traceability." },
+  { icon: DatabaseZap, nameEs: "Migración y calidad de datos", nameEn: "Data migration and quality",
+    scopeEs: "Extracción, depuración, homologación, transformación, consolidación y migración de información histórica entre sistemas y proyectos.",
+    scopeEn: "Extraction, cleansing, standardization, transformation, consolidation and migration of historical information between systems and projects." },
+  { icon: Rocket, nameEs: "Implantación y puesta en marcha", nameEn: "Implementation and go-live",
+    scopeEs: "Configuración de ambientes, instalación, parametrización, pruebas, carga inicial, validación con usuarios, puesta en producción y acompañamiento durante el arranque.",
+    scopeEn: "Environment configuration, installation, parameterization, testing, initial data load, user validation, and go-live support and accompaniment." },
+  { icon: GraduationCap, nameEs: "Capacitación y transferencia de conocimiento", nameEn: "Training and knowledge transfer",
+    scopeEs: "Capacitación funcional y técnica para usuarios, administradores y equipos de proyecto, incluyendo cursos especializados de SQL Server y bases de datos.",
+    scopeEn: "Functional and technical training for users, administrators and project teams, including specialized courses on SQL Server and databases." },
+  { icon: Headphones, nameEs: "Soporte y evolución de soluciones", nameEn: "Solution support and evolution",
+    scopeEs: "Soporte funcional y técnico, diagnóstico de incidencias, mantenimiento, actualizaciones, mejoras y evolución continua de las soluciones implantadas.",
+    scopeEn: "Functional and technical support, incident diagnosis, maintenance, updates, improvements and continuous evolution of the implemented solutions." },
+  { icon: BarChart3, nameEs: "Bases de datos y Business Intelligence", nameEn: "Databases and Business Intelligence",
+    scopeEs: "Consultoría SQL Server: modelado, optimización, rendimiento, seguridad, auditoría, respaldos y continuidad; integración de datos, KPI, dashboards y reportes gerenciales.",
+    scopeEn: "SQL Server consulting: modeling, optimization, performance, security, auditing, backups and continuity; data integration, KPIs, dashboards and management reports." },
+  { icon: ClipboardCheck, nameEs: "Project Controls, Claims y gestión documental", nameEn: "Project Controls, Claims and document management",
+    scopeEs: "Integración y análisis de información de costos, producción y avance; consolidación de evidencias, cronologías, trazabilidad, consultas y procesamiento masivo de documentación para soporte a reclamos.",
+    scopeEn: "Integration and analysis of cost, production and progress information; consolidation of evidence, chronologies, traceability, queries and large-scale document processing to support claims." },
+  { icon: Cloud, nameEs: "Infraestructura y nube", nameEn: "Infrastructure and cloud",
+    scopeEs: "Migración, configuración y administración de servidores, bases de datos, aplicaciones e infraestructura en nube.",
+    scopeEn: "Migration, configuration and administration of servers, databases, applications and infrastructure in the cloud." },
 ];
 
 const clients = [
@@ -727,16 +726,14 @@ const clients = [
 export default function Home() {
   const [language, setLanguage] = useState<Language>("es");
   const [selectedProduct, setSelectedProduct] = useState<typeof products[0] | null>(null);
-  const [selectedService, setSelectedService] = useState<typeof services[0] | null>(null);
   const [productIndex, setProductIndex] = useState(0);
-  const [serviceIndex, setServiceIndex] = useState(0);
   const productCarouselRef = useRef<HTMLDivElement>(null);
-  const serviceCarouselRef = useRef<HTMLDivElement>(null);
   const t = translations[language];
   const [menuOpen, setMenuOpen] = useState(false);
   const navLinks: [string, string][] = [
     ["#inicial", t.nav.inicial],
     ["#productos", t.nav.productos],
+    ["#asesoria", t.nav.asesoria],
     ["#servicios", t.nav.servicios],
     ["#sobre", t.nav.sobre],
     ["#clientes", t.nav.clientes],
@@ -771,11 +768,18 @@ export default function Home() {
 
   const handleRequestDemo = (itemName: string) => {
     setSelectedProduct(null);
-    setSelectedService(null);
     const text =
       language === "es"
         ? `Hola, tengo interés en una demo de ${itemName}.`
         : `Hi, I'm interested in a demo of ${itemName}.`;
+    window.open(whatsappUrl(text), "_blank", "noopener");
+  };
+
+  const handleAdvisoryContact = (name: string) => {
+    const text =
+      language === "es"
+        ? `Hola, quisiera agendar una conversación sobre ${name}.`
+        : `Hi, I'd like to schedule a conversation about ${name}.`;
     window.open(whatsappUrl(text), "_blank", "noopener");
   };
 
@@ -791,27 +795,13 @@ export default function Home() {
     );
   };
 
-  const handleServicePrev = () => {
-    setServiceIndex((prev) =>
-      prev === 0 ? Math.max(0, services.length - itemsPerView) : prev - 1
-    );
-  };
 
-  const handleServiceNext = () => {
-    setServiceIndex((prev) =>
-      prev >= services.length - itemsPerView ? 0 : prev + 1
-    );
-  };
 
   useEffect(() => {
     if (swipingRef.current) return;
     scrollToCard(productCarouselRef.current, productIndex);
   }, [productIndex, itemsPerView]);
 
-  useEffect(() => {
-    if (swipingRef.current) return;
-    scrollToCard(serviceCarouselRef.current, serviceIndex);
-  }, [serviceIndex, itemsPerView]);
 
   return (
     <div className="min-h-screen bg-white">
@@ -1000,8 +990,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services Carousel */}
-      <section id="servicios" className="py-16 md:py-24 bg-secondary/30">
+      <Asesoria language={language} onContact={handleAdvisoryContact} />
+
+      {/* Services */}
+      <section id="servicios" className="py-16 md:py-24 bg-white">
         <div className="container">
           <div className="mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-primary mb-2" style={{ fontFamily: "Playfair Display" }}>
@@ -1010,73 +1002,21 @@ export default function Home() {
             <p className="text-muted-foreground">{t.services.subtitle}</p>
           </div>
 
-          <div className="relative">
-            <div
-              ref={serviceCarouselRef}
-              onScroll={(e) => syncIndex(e.currentTarget, setServiceIndex)}
-              className="flex gap-6 overflow-x-auto md:overflow-x-hidden snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-            >
-              {services.map((service) => {
-                const Icon = service.icon;
-                return (
-                  <div
-                    key={service.id}
-                    className="snap-start flex-shrink-0 w-full md:w-[calc((100%-3rem)/3)] bg-card rounded-lg p-6 md:p-8 border border-border hover:shadow-lg transition-shadow duration-300"
-                  >
-                    <div className="relative w-full aspect-[4/3] rounded-lg mb-4 overflow-hidden bg-gradient-to-br from-[#0a2a66] via-[#0d47c4] to-[#2f80ff] flex items-center justify-center">
-                      <div className="absolute -right-10 -bottom-10 w-40 h-40 rounded-full bg-white/10" />
-                      <div className="absolute -left-8 -top-8 w-28 h-28 rounded-full bg-white/10" />
-                      <Icon className="relative w-20 h-20 text-white" strokeWidth={1.5} />
-                    </div>
-                    <h3 className="inline-block text-xl font-semibold text-foreground bg-secondary/60 px-2 py-0.5 rounded mb-2">
-                      {language === "es" ? service.nameEs : service.nameEn}
-                    </h3>
-                    <p className="text-muted-foreground mb-6">
-                      {language === "es" ? service.descriptionEs : service.descriptionEn}
-                    </p>
-                    <Button
-                      onClick={() => setSelectedService(service)}
-                      variant="outline"
-                      className="w-full border-primary text-primary hover:bg-primary/10"
-                    >
-                      {t.contact.learnMore}
-                    </Button>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {services.map((service) => {
+              const Icon = service.icon;
+              return (
+                <div key={service.nameEs} className="rounded-lg p-5 border border-border hover:shadow-md transition-shadow duration-300 flex gap-4">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <Icon size={20} className="text-primary" />
                   </div>
-                );
-              })}
-            </div>
-
-            {/* Carousel Controls */}
-            <button
-              onClick={handleServicePrev}
-              className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 md:-translate-x-20 bg-primary hover:bg-primary/90 text-white rounded-full p-3 transition-colors"
-              aria-label="Previous services"
-            >
-              <ChevronLeft size={24} />
-            </button>
-            <button
-              onClick={handleServiceNext}
-              className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 md:translate-x-20 bg-primary hover:bg-primary/90 text-white rounded-full p-3 transition-colors"
-              aria-label="Next services"
-            >
-              <ChevronRight size={24} />
-            </button>
-          </div>
-
-          {/* Carousel Indicators */}
-          <div className="flex justify-center gap-2 mt-8">
-            {Array.from({ length: Math.max(1, services.length - itemsPerView + 1) }).map(
-              (_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setServiceIndex(idx)}
-                  className={`w-2 h-2 rounded-full transition-colors ${
-                    idx === serviceIndex ? "bg-primary" : "bg-border"
-                  }`}
-                  aria-label={`Go to service slide ${idx + 1}`}
-                />
-              )
-            )}
+                  <div>
+                    <h3 className="font-semibold text-foreground mb-1">{language === "es" ? service.nameEs : service.nameEn}</h3>
+                    <p className="text-sm text-muted-foreground">{language === "es" ? service.scopeEs : service.scopeEn}</p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -1340,39 +1280,6 @@ export default function Home() {
         </div>
       )}
 
-      {/* Service Modal */}
-      {selectedService && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="sticky top-0 bg-primary text-white p-6 flex items-center justify-between">
-              <h3 className="text-2xl font-bold" style={{ fontFamily: "Playfair Display" }}>
-                {language === "es" ? selectedService.nameEs : selectedService.nameEn}
-              </h3>
-              <button
-                onClick={() => setSelectedService(null)}
-                className="p-1 hover:bg-white/20 rounded transition-colors"
-              >
-                <X size={24} />
-              </button>
-            </div>
-            <div className="p-6 space-y-6">
-              <div>
-                <p className="text-lg text-foreground mb-4">
-                  {language === "es" ? selectedService.detailEs : selectedService.detailEn}
-                </p>
-              </div>
-              <Button
-                onClick={() =>
-                  handleRequestDemo(language === "es" ? selectedService.nameEs : selectedService.nameEn)
-                }
-                className="w-full bg-primary hover:bg-primary/90 text-white"
-              >
-                {language === "es" ? "Contactar Ahora" : "Contact Now"}
-              </Button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
