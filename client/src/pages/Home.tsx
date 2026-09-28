@@ -209,7 +209,7 @@ const products: Product[] = [
     subtitleEn: "Payroll Management System",
     descriptionEs: "Gestión completa de nómina y recursos humanos con administración de personal, vacaciones, ausencias y reportes analíticos.",
     descriptionEn: "Complete payroll and human resources management with personnel administration, vacations, absences, and analytical reports.",
-    image: "/images/produtos/payroll.webp?v=2",
+    image: "/images/produtos/payroll.webp?v=3",
     featuresEs: [
       "Administración de personal",
       "Headcount",
@@ -255,7 +255,7 @@ const products: Product[] = [
     subtitleEn: "Personnel Management System",
     descriptionEs: "Control integral de personal con gestión de datos laborales, control de acceso, asistencia y entrenamientos en tiempo real.",
     descriptionEn: "Comprehensive personnel control with labor data management, access control, attendance, and real-time training.",
-    image: "/images/produtos/sisgep.webp?v=2",
+    image: "/images/produtos/sisgep.webp?v=3",
     featuresEs: [
       "Datos Personales y Laborales",
       "Control y Organigrama de Encargados & Cuadrillas",
@@ -307,7 +307,7 @@ const products: Product[] = [
     subtitleEn: "Machinery & Equipment Control",
     descriptionEs: "Control de maquinaria y equipos de obra: horas trabajadas, paradas, consumo de combustible y eficiencia operacional en tiempo real.",
     descriptionEn: "Construction machinery and equipment control: worked hours, downtime, fuel consumption and real-time operational efficiency.",
-    image: "/images/produtos/acm.webp?v=2",
+    image: "/images/produtos/acm.webp?v=3",
     featuresEs: [
       "Reducción de costos por medio de monitoreo de las horas de equipos",
       "Controle de productividad de maquinaria",
@@ -343,7 +343,7 @@ const products: Product[] = [
     subtitleEn: "Warehouse Control",
     descriptionEs: "Control de bodegas, inventario y stock con reducción de costos y hurtos.",
     descriptionEn: "Warehouse control, inventory, and stock with cost and theft reduction.",
-    image: "/images/produtos/tools.webp",
+    image: "/images/produtos/tools.webp?v=3",
     featuresEs: [
       "Reducción de costos, hurtos, extravíos y desperdicios de Materiales",
       "Acompañamiento en línea de Stock de las Bodegas",
@@ -379,7 +379,7 @@ const products: Product[] = [
     subtitleEn: "Daily Reports",
     descriptionEs: "Consolidación e información de datos en reportes diarios con fotos y archivos adjuntos.",
     descriptionEn: "Consolidation and data information in daily reports with attached photos and files.",
-    image: "/images/produtos/daily.webp",
+    image: "/images/produtos/daily.webp?v=3",
     featuresEs: [
       "Consolidación e Información de datos en los reportes",
       "Equipos",
@@ -415,7 +415,7 @@ const products: Product[] = [
     subtitleEn: "Electronic Capture & Production Monitoring",
     descriptionEs: "Monitoreo de producción en tiempo real con captura electrónica de datos de obras.",
     descriptionEn: "Real-time production monitoring with electronic data capture from construction sites.",
-    image: "/images/produtos/tracking.webp",
+    image: "/images/produtos/tracking.webp?v=3",
     featuresEs: [
       "Plantas Mezcladoras de Concreto",
       "Plantas Trituradoras",
@@ -451,7 +451,7 @@ const products: Product[] = [
     subtitleEn: "Subcontract Management",
     descriptionEs: "Gestión electrónica de subcontratos, órdenes de servicios y valuaciones.",
     descriptionEn: "Electronic management of subcontracts, service orders, and valuations.",
-    image: "/images/produtos/contract.webp",
+    image: "/images/produtos/contract.webp?v=3",
     featuresEs: [
       "Servicios",
       "Empresas",
@@ -493,7 +493,7 @@ const products: Product[] = [
     subtitleEn: "Cost Management",
     descriptionEs: "Integración de movimientos para cálculo de costo unitario con análisis de consistencias.",
     descriptionEn: "Integration of movements for unit cost calculation with consistency analysis.",
-    image: "/images/produtos/cost.webp",
+    image: "/images/produtos/cost.webp?v=3",
     featuresEs: [
       "Integración de movimiento para cálculo de costo unitario",
       "Mano de Obra",
@@ -535,7 +535,7 @@ const products: Product[] = [
     subtitleEn: "Budget Management",
     descriptionEs: "Gestión de presupuestos con análisis de precios y cronogramas de servicios.",
     descriptionEn: "Budget management with price analysis and service schedules.",
-    image: "/images/produtos/budget.webp",
+    image: "/images/produtos/budget.webp?v=3",
     featuresEs: [
       "Servicios",
       "Recursos",
@@ -577,7 +577,7 @@ const products: Product[] = [
     subtitleEn: "Quality Inspection System",
     descriptionEs: "Inspección técnica y control de calidad con reportes detallados para asegurar estándares de excelencia.",
     descriptionEn: "Technical inspection and quality control with detailed reports to ensure excellence standards.",
-    image: "/images/produtos/insp.webp",
+    image: "/images/produtos/insp.webp?v=3",
     featuresEs: [
       "Creación de Cuestionarios de Inspección",
       "Registro de Respuestas",
@@ -607,7 +607,7 @@ const products: Product[] = [
     subtitleEn: "Laboratory Management Software",
     descriptionEs: "Software para gestión de laboratorios con registro de ensayos y control de vaciado.",
     descriptionEn: "Laboratory management software with test registration and casting control.",
-    image: "/images/produtos/lab.webp",
+    image: "/images/produtos/lab.webp?v=3",
     featuresEs: [
       "Registros de ensayos de cemento",
       "Registro Propiedades Físicas y Químicas",
@@ -641,7 +641,7 @@ const products: Product[] = [
     subtitleEn: "Clinic Management Software",
     descriptionEs: "Software para gestión de clínicas con registro de historiales médicos y control de citas.",
     descriptionEn: "Clinic management software with medical history registration and appointment control.",
-    image: "/images/produtos/doctor.webp",
+    image: "/images/produtos/doctor.webp?v=3",
     featuresEs: [
       "Registro y Historial de atendimientos médicos",
       "Control de status y programación de citas",
@@ -938,26 +938,26 @@ export default function Home() {
               {products.map((product) => (
                 <div
                   key={product.id}
-                  className="snap-start flex-shrink-0 w-full md:w-[calc((100%-3rem)/3)] bg-card rounded-lg p-6 md:p-8 border border-border hover:shadow-lg transition-shadow duration-300"
+                  className="flex flex-col snap-start flex-shrink-0 w-full md:w-[calc((100%-3rem)/3)] bg-card rounded-lg p-6 md:p-8 border border-border hover:shadow-lg transition-shadow duration-300"
                 >
                   {product.image && (
-                    <button type="button" onClick={() => setSelectedProduct(product)} className="block w-full mb-4 overflow-hidden rounded-lg">
+                    <button type="button" onClick={() => setSelectedProduct(product)} className="block w-full mb-4 shrink-0 overflow-hidden rounded-lg">
                       <img
                         src={product.image}
                         alt={language === "es" ? product.nameEs : product.nameEn}
                         loading="lazy"
-                        className="w-full aspect-[1254/860] object-cover hover:scale-105 transition-transform duration-300"
+                        className="w-full aspect-[4/3] object-cover hover:scale-105 transition-transform duration-300"
                       />
                     </button>
                   )}
                   {!product.image && <div className="text-5xl mb-4">{product.icon}</div>}
-                  <h3 className="inline-block text-xl font-semibold text-foreground bg-secondary/60 px-2 py-0.5 rounded mb-1">
+                  <h3 className="self-start text-xl font-semibold text-foreground bg-secondary/60 px-2 py-0.5 rounded mb-1">
                     {language === "es" ? product.nameEs : product.nameEn}
                   </h3>
                   <p className="text-sm text-accent mb-4">
                     {language === "es" ? product.subtitleEs : product.subtitleEn}
                   </p>
-                  <p className="text-muted-foreground mb-6">
+                  <p className="flex-1 text-muted-foreground mb-6">
                     {language === "es" ? product.descriptionEs : product.descriptionEn}
                   </p>
                   <Button

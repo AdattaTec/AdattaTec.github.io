@@ -1,5 +1,14 @@
 # Changelog — Site institucional Adatta (www.adattati.com)
 
+## 2026-09-27 — Produtos: capas 4:3 e botão alinhado
+
+- As 12 capas foram refeitas (origem: `adatta-site-com-imagens/Imagens Produtos Adatta`), todas em 4:3
+  (1448×1086) e só com o nome do sistema na arte. Card = 960×720, detalhe (`-full`) = 1448×1086.
+  O card passou de `aspect-[1254/860]` para `aspect-[4/3]` para mostrar a arte inteira, sem corte.
+- URLs das imagens com `?v=3` para o navegador não reaproveitar a versão em cache.
+- "Saber más" sempre no rodapé do card: o card agora empilha o conteúdo em coluna e a descrição
+  ocupa o espaço livre. Antes o botão seguia o tamanho do texto e desalinhava conforme a largura da tela.
+
 ## 2026-09-26 — Produtos: novas artes e nova ordem
 
 - Artes novas de **PayRoll**, **SisGep** e **ACM** (origem: `adatta-site-com-imagens/Novas imgs`):
