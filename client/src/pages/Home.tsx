@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { TechSections } from "@/components/TechSections";
 import { Asesoria } from "@/components/Asesoria";
 import { Trayectoria } from "@/components/Trayectoria";
+import { Equipo } from "@/components/Equipo";
 
 /**
  * Design System: Minimalismo Corporativo Moderno
@@ -1171,6 +1172,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <Equipo language={language} />
 
       <Trayectoria language={language} />
 
