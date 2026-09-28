@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/button";
 
 /**
  * Seção "Asesoría": serviços de consultoria de maior valor (know-how de obra),
- * separados dos serviços técnicos. Card com foto + modal com a arte completa.
+ * separados dos serviços técnicos. Mesmo padrão dos Productos: card com foto,
+ * subtítulo e frase; modal com a arte completa, detalhe e lista de alcance.
  */
 
 type Lang = "es" | "en";
@@ -14,116 +15,269 @@ interface Offer {
   image: string;
   fullImage?: Record<Lang, string>;
   name: Record<Lang, string>;
-  tagline: Record<Lang, string>;
-  description: Record<Lang, string>;
-  highlights: Record<Lang, string[]>;
-  details: Record<Lang, string[]>;
+  subtitle: Record<Lang, string>;
+  card: Record<Lang, string>;
+  detail: Record<Lang, string>;
+  concept?: Record<Lang, string>;
+  scope: Record<Lang, string[]>;
+  benefits?: Record<Lang, string[]>;
 }
+
+// O "&" da Playfair Display é um floreio caligráfico que parece erro; usa o da fonte do texto
+const withPlainAmpersand = (text: string) =>
+  text.split("&").flatMap((part, i) => (i === 0 ? [part] : [<span key={i} className="font-sans">&amp;</span>, part]));
 
 const offers: Offer[] = [
   {
     id: "claims",
-    image: "/images/asesoria/claims.webp",
-    fullImage: { es: "/images/asesoria/claims-full-es.webp", en: "/images/asesoria/claims-full-en.webp" },
+    image: "/images/asesoria/claims.webp?v=2",
+    fullImage: { es: "/images/asesoria/claims-full.webp?v=2", en: "/images/asesoria/claims-full.webp?v=2" },
     name: { es: "Datos de Proyecto y Preparación para Reclamos", en: "Project Data & Claims Readiness" },
-    tagline: { es: "La infraestructura de evidencia de su proyecto.", en: "The evidence infrastructure for your project." },
-    description: {
-      es: "Capture, integre, organice y preserve los datos de su obra: información confiable para Project Controls, toma de decisiones y soporte a reclamos. Porque un reclamo no comienza cuando surge la disputa; comienza con la calidad de sus registros desde el primer día.",
-      en: "Capture, integrate, organize and preserve your project data: reliable information for Project Controls, decision-making and claims support. Because a claim doesn't start when a dispute arises; it starts with the quality of your records from day one.",
+    subtitle: {
+      es: "Centralización, Trazabilidad y Claims Readiness",
+      en: "Centralization, Traceability and Claims Readiness",
     },
-    highlights: {
-      es: ["Información centralizada", "Trazabilidad completa", "Soporte a reclamos"],
-      en: ["Centralized information", "Full traceability", "Claims support"],
+    card: {
+      es: "Centralizamos los datos del proyecto para transformar información dispersa en trazabilidad, gestión y evidencia.",
+      en: "We centralize project data to turn scattered information into traceability, management and evidence.",
     },
-    details: {
+    detail: {
+      es: "Identificamos las diferentes fuentes de información de la obra y estructuramos una base de datos centralizada y continuamente actualizada, consolidando registros de producción, recursos, avances, eventos y demás información relevante del proyecto para generar reportes, dashboards y evidencia confiable para la gestión y futuros reclamos.",
+      en: "We identify the site's different information sources and build a centralized, continuously updated database, consolidating production, resources, progress, events and other relevant project records to deliver reports, dashboards and reliable evidence for management and future claims.",
+    },
+    concept: {
+      es: "De múltiples fuentes a una única historia del proyecto.",
+      en: "From multiple sources to a single project story.",
+    },
+    scope: {
       es: [
-        "Integración de fuentes: mano de obra y nómina, equipos y flotas, accesos, planta de concreto, materiales, costos, cronograma (Primavera P6), planos/BIM, calidad, fotos y drones, subcontratistas",
-        "Histórico confiable de eventos, documentos, costos, productividad y recursos",
-        "Cronologías y consolidación de evidencias para soporte a reclamos",
-        "Visibilidad en tiempo real: una sola plataforma, toda la historia de su proyecto",
+        "Diagnóstico de Fuentes de Datos",
+        "Centralización y Consolidación de Información",
+        "Base de Datos Única del Proyecto",
+        "Estructuración y Normalización de Datos",
+        "Actualización Continua",
+        "Plantas de Concreto",
+        "Plantas de Trituración",
+        "Plantas de Asfalto",
+        "Balanzas y Producción",
+        "Mano de Obra y Equipos",
+        "Avances y Cantidades Ejecutadas",
+        "Registros Diarios",
+        "Fotografías y Evidencias",
+        "Cronología del Proyecto",
+        "Cambios y Eventos Relevantes",
+        "Correspondencias y Documentos",
+        "Integración de Fuentes de Datos",
+        "Reportes Automatizados",
+        "Dashboards e Indicadores",
+        "Trazabilidad Histórica",
+        "Soporte de Datos para Claims",
+        "Claims Readiness",
       ],
       en: [
-        "Source integration: labor and payroll, equipment and fleet, access control, concrete plant, materials, costs, schedule (Primavera P6), plans/BIM, quality, photos and drones, subcontractors",
-        "Reliable history of events, documents, costs, productivity and resources",
-        "Chronologies and evidence consolidation to support claims",
-        "Real-time visibility: one platform, the complete project story",
+        "Data Source Assessment",
+        "Information Centralization and Consolidation",
+        "Single Project Database",
+        "Data Structuring and Normalization",
+        "Continuous Updating",
+        "Concrete Plants",
+        "Crushing Plants",
+        "Asphalt Plants",
+        "Scales and Production",
+        "Labor and Equipment",
+        "Progress and Executed Quantities",
+        "Daily Records",
+        "Photos and Evidence",
+        "Project Chronology",
+        "Changes and Relevant Events",
+        "Correspondence and Documents",
+        "Data Source Integration",
+        "Automated Reports",
+        "Dashboards and Indicators",
+        "Historical Traceability",
+        "Data Support for Claims",
+        "Claims Readiness",
       ],
     },
   },
   {
     id: "controls",
-    image: "/images/asesoria/controls.webp",
-    fullImage: { es: "/images/asesoria/controls-full.webp", en: "/images/asesoria/controls-full.webp" },
+    image: "/images/asesoria/controls.webp?v=2",
+    fullImage: { es: "/images/asesoria/controls-full.webp?v=2", en: "/images/asesoria/controls-full.webp?v=2" },
     name: { es: "Project Controls", en: "Project Controls" },
-    tagline: {
-      es: "Del dato en la obra a la información, de la información a mejores decisiones.",
-      en: "From site data to information, from information to better decisions.",
+    subtitle: {
+      es: "Costos, Avance y Desempeño del Proyecto",
+      en: "Project Costs, Progress and Performance",
     },
-    description: {
-      es: "Asesoría en control de costos, presupuesto y contratos para obras de infraestructura, con la experiencia de grandes proyectos en Latinoamérica y el soporte de Adatta Cost, Budget y Contract.",
-      en: "Advisory on cost, budget and contract control for infrastructure projects, backed by experience in major Latin American projects and supported by Adatta Cost, Budget and Contract.",
+    card: {
+      es: "Control de costos, avance y desempeño para una gestión basada en información confiable.",
+      en: "Cost, progress and performance control for management based on reliable information.",
     },
-    highlights: {
-      es: ["Control de costos", "Presupuesto y forecast", "Contratos y subcontratos"],
-      en: ["Cost control", "Budget and forecast", "Contracts and subcontracts"],
+    detail: {
+      es: "Apoyamos el seguimiento y control del proyecto mediante el análisis integrado de presupuesto, costos reales, producción, avance y recursos, permitiendo identificar desviaciones y generar información confiable para la toma de decisiones.",
+      en: "We support project monitoring and control through integrated analysis of budget, actual costs, production, progress and resources, making it possible to identify variances and generate reliable information for decision-making.",
     },
-    details: {
+    scope: {
       es: [
-        "Costos por rubro y actividad, curva S y análisis de variaciones (real vs. presupuestado)",
-        "Estudios y escenarios, CBS, estimaciones, forecast y flujo de caja del proyecto",
-        "Control de contratos y subcontratos, cambios, reclamos, compromisos y certificaciones",
-        "Reportes gerenciales e integración con otros sistemas",
+        "Presupuesto y Línea Base",
+        "Costos Reales",
+        "Real vs. Presupuesto",
+        "Avance Físico",
+        "Producción",
+        "Costos Unitarios",
+        "Mano de Obra",
+        "Equipos",
+        "Materiales",
+        "Subcontratos",
+        "Centros de Costos",
+        "Indicadores de Desempeño",
+        "Curvas de Avance",
+        "Análisis de Desviaciones",
+        "Dashboards Gerenciales",
+        "Consistencia de Información",
+        "Reportes para la Gestión del Proyecto",
       ],
       en: [
-        "Costs by item and activity, S-curve and variance analysis (actual vs. budget)",
-        "Studies and scenarios, CBS, estimates, forecast and project cash flow",
-        "Contract and subcontract control, changes, claims, commitments and certifications",
-        "Management reports and integration with other systems",
+        "Budget and Baseline",
+        "Actual Costs",
+        "Actual vs. Budget",
+        "Physical Progress",
+        "Production",
+        "Unit Costs",
+        "Labor",
+        "Equipment",
+        "Materials",
+        "Subcontracts",
+        "Cost Centers",
+        "Performance Indicators",
+        "Progress Curves",
+        "Variance Analysis",
+        "Management Dashboards",
+        "Information Consistency",
+        "Project Management Reports",
       ],
     },
   },
   {
     id: "planilla",
-    image: "/images/asesoria/planilla.webp",
-    fullImage: { es: "/images/asesoria/planilla-full.webp", en: "/images/asesoria/planilla-full.webp" },
+    image: "/images/asesoria/planilla.webp?v=2",
+    fullImage: { es: "/images/asesoria/planilla-full.webp?v=2", en: "/images/asesoria/planilla-full.webp?v=2" },
     name: { es: "Outsourcing de Nómina", en: "Payroll Outsourcing" },
-    tagline: { es: "Nómina como servicio.", en: "Payroll as a service." },
-    description: {
-      es: "Equipo especializado + sistema avanzado: calidad, precisión y responsabilidad en cada nómina, con Adatta PayRoll.",
-      en: "Specialized team + advanced system: quality, accuracy and accountability in every payroll, powered by Adatta PayRoll.",
+    subtitle: { es: "Operación Integral de Nómina", en: "End-to-End Payroll Operation" },
+    card: {
+      es: "Gestión integral de nómina, cumplimiento y soporte especializado, respaldados por tecnología y experiencia local.",
+      en: "End-to-end payroll management, compliance and specialized support, backed by technology and local expertise.",
     },
-    highlights: {
-      es: ["Administración integral", "Cumplimiento legal", "Modelo flexible"],
-      en: ["End-to-end administration", "Legal compliance", "Flexible model"],
+    detail: {
+      es: "Administramos la nómina de forma total o parcial, desde la recepción y validación de novedades hasta el cálculo, revisión, cumplimiento de obligaciones, generación de archivos de pago, comprobantes y reportes, reduciendo la carga operativa de Recursos Humanos.",
+      en: "We manage payroll fully or partially, from receiving and validating payroll changes to calculation, review, compliance with obligations and generation of payment files, pay slips and reports, reducing the operational workload of Human Resources.",
     },
-    details: {
+    scope: {
       es: [
-        "Administración integral: recepción, cálculo y emisión",
-        "Cumplimiento legal: base histórica real, ISR, XIII y vacaciones",
-        "Control y transparencia: historial auditado y confiable",
-        "Soporte especializado: atención directa con experto",
-        "Ahorro de tiempo y recursos: menos carga para RR. HH.",
-        "Modelo flexible: total, parcial y adaptado al cliente",
-        "Seguridad y confidencialidad: protección profesional de datos laborales",
-        "Sin errores de nómina: procesos probados y de calidad",
+        "Administración Integral de Nómina",
+        "Recepción y Validación de Novedades",
+        "Preplanilla",
+        "Cálculo y Emisión de Nómina",
+        "Horas Regulares y Extras",
+        "Recargos y Condiciones Especiales",
+        "Vacaciones y Ausencias",
+        "Incapacidades",
+        "Bonificaciones y Deducciones",
+        "ISR y Proyección de ISR",
+        "XIII Mes",
+        "Vacaciones",
+        "Liquidaciones y Prestaciones",
+        "SIPE",
+        "Anexo 03",
+        "Cargas Sociales",
+        "Generación de Comprobantes de Pago",
+        "Archivos Bancarios",
+        "Reportes de Nómina",
+        "Reportes Analíticos y Gerenciales",
+        "Historial de Nómina",
+        "Trazabilidad y Auditoría",
+        "Parametrización de Conceptos e Incidencias",
+        "Control y Validación de Procesos",
+        "Soporte Especializado",
+        "Seguridad y Confidencialidad de la Información",
+        "Servicio Total o Parcial Adaptado al Cliente",
       ],
       en: [
-        "End-to-end administration: intake, calculation and issuance",
-        "Legal compliance: real historical base, income tax (ISR), 13th month and vacations",
-        "Control and transparency: audited, reliable history",
-        "Specialized support: direct attention from an expert",
-        "Time and resource savings: less load on HR",
-        "Flexible model: full, partial and tailored to the client",
-        "Security and confidentiality: professional protection of employee data",
-        "Error-free payroll: proven, quality processes",
+        "End-to-End Payroll Administration",
+        "Receipt and Validation of Payroll Changes",
+        "Pre-Payroll",
+        "Payroll Calculation and Issuance",
+        "Regular and Overtime Hours",
+        "Surcharges and Special Conditions",
+        "Vacations and Absences",
+        "Sick Leave",
+        "Bonuses and Deductions",
+        "Income Tax (ISR) and ISR Projection",
+        "13th Month Pay (XIII Mes)",
+        "Vacations",
+        "Settlements and Benefits",
+        "SIPE",
+        "Anexo 03",
+        "Social Security Charges",
+        "Pay Slip Generation",
+        "Bank Files",
+        "Payroll Reports",
+        "Analytical and Management Reports",
+        "Payroll History",
+        "Traceability and Audit",
+        "Pay Concept and Incident Configuration",
+        "Process Control and Validation",
+        "Specialized Support",
+        "Information Security and Confidentiality",
+        "Full or Partial Service Tailored to the Client",
+      ],
+    },
+    benefits: {
+      es: [
+        "Menor carga operativa para Recursos Humanos",
+        "Atención directa y especializada",
+        "Historial confiable y auditable",
+        "Mayor control y transparencia",
+        "Procesos orientados a reducir errores",
+        "Cumplimiento de obligaciones de nómina",
+        "Flexibilidad según las necesidades del cliente",
+        "Protección de la información laboral",
+      ],
+      en: [
+        "Less operational workload for Human Resources",
+        "Direct, specialized attention",
+        "Reliable, auditable history",
+        "Greater control and transparency",
+        "Processes designed to reduce errors",
+        "Compliance with payroll obligations",
+        "Flexibility to fit client needs",
+        "Protection of employee information",
       ],
     },
   },
 ];
 
 const labels = {
-  es: { title: "Asesoría", subtitle: "Experiencia de obra y tecnología al servicio de su proyecto", more: "Ver más", cta: "Agendar una conversación" },
-  en: { title: "Advisory", subtitle: "Construction experience and technology working for your project", more: "Learn more", cta: "Schedule a conversation" },
+  es: {
+    title: "Asesoría & Servicios Especializados",
+    subtitle: "Experiencia en construcción, datos y tecnología aplicada a la gestión del proyecto.",
+    intro:
+      "Acompañamos a nuestros clientes en áreas críticas de datos, control de proyectos, reclamos y nómina, combinando conocimiento especializado, experiencia en obra y tecnología.",
+    more: "Saber Más",
+    scope: "Alcance",
+    benefits: "Beneficios",
+    cta: "Agendar una conversación",
+  },
+  en: {
+    title: "Advisory & Specialized Services",
+    subtitle: "Construction, data and technology expertise applied to project management.",
+    intro:
+      "We support our clients in critical areas of data, project controls, claims and payroll, combining specialized knowledge, site experience and technology.",
+    more: "Learn More",
+    scope: "Scope",
+    benefits: "Benefits",
+    cta: "Schedule a conversation",
+  },
 };
 
 export function Asesoria({ language, onContact }: { language: Lang; onContact: (subject: string) => void }) {
@@ -135,15 +289,16 @@ export function Asesoria({ language, onContact }: { language: Lang; onContact: (
       <div className="container">
         <div className="mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-2" style={{ fontFamily: "Playfair Display" }}>
-            {l.title}
+            {withPlainAmpersand(l.title)}
           </h2>
-          <p className="text-muted-foreground">{l.subtitle}</p>
+          <p className="text-xl md:text-2xl font-semibold text-foreground mb-4">{l.subtitle}</p>
+          <p className="max-w-3xl text-muted-foreground">{l.intro}</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
           {offers.map((o) => (
-            <div key={o.id} className="bg-white rounded-lg border border-border overflow-hidden flex flex-col hover:shadow-lg transition-shadow duration-300">
-              <button type="button" onClick={() => setSelected(o)} className="block overflow-hidden">
+            <div key={o.id} className="flex flex-col bg-card rounded-lg p-6 md:p-8 border border-border hover:shadow-lg transition-shadow duration-300">
+              <button type="button" onClick={() => setSelected(o)} className="block w-full mb-4 shrink-0 overflow-hidden rounded-lg">
                 <img
                   src={o.image}
                   alt={o.name[language]}
@@ -151,25 +306,16 @@ export function Asesoria({ language, onContact }: { language: Lang; onContact: (
                   className="w-full aspect-[4/3] object-cover hover:scale-105 transition-transform duration-300"
                 />
               </button>
-              <div className="p-6 flex flex-col flex-1">
-                <h3 className="text-xl font-semibold text-foreground mb-2">{o.name[language]}</h3>
-                <p className="text-sm text-accent mb-4">{o.tagline[language]}</p>
-                <ul className="space-y-1 mb-6">
-                  {o.highlights[language].map((h) => (
-                    <li key={h} className="flex gap-2 text-sm text-muted-foreground">
-                      <Check size={16} className="text-accent flex-shrink-0 mt-0.5" />
-                      {h}
-                    </li>
-                  ))}
-                </ul>
-                <Button
-                  onClick={() => setSelected(o)}
-                  variant="outline"
-                  className="mt-auto w-full border-primary text-primary hover:bg-primary/10"
-                >
-                  {l.more}
-                </Button>
-              </div>
+              <h3 className="self-start text-xl font-semibold text-foreground bg-secondary/60 px-2 py-0.5 rounded mb-1">{o.name[language]}</h3>
+              <p className="text-sm text-accent mb-4">{o.subtitle[language]}</p>
+              <p className="flex-1 text-muted-foreground mb-6">{o.card[language]}</p>
+              <Button
+                onClick={() => setSelected(o)}
+                variant="outline"
+                className="w-full border-primary text-primary hover:bg-primary/10"
+              >
+                {l.more}
+              </Button>
             </div>
           ))}
         </div>
@@ -192,15 +338,34 @@ export function Asesoria({ language, onContact }: { language: Lang; onContact: (
                   <img src={selected.fullImage[language]} alt={selected.name[language]} className="w-full rounded-lg border border-border" />
                 </a>
               )}
-              <p className="text-lg text-foreground">{selected.description[language]}</p>
-              <ul className="space-y-2">
-                {selected.details[language].map((d) => (
-                  <li key={d} className="flex gap-3 text-foreground">
-                    <Check size={18} className="text-accent flex-shrink-0 mt-1" />
-                    <span>{d}</span>
-                  </li>
-                ))}
-              </ul>
+              <p className="text-lg text-foreground">{selected.detail[language]}</p>
+              {selected.concept && (
+                <p className="border-l-4 border-accent pl-4 italic text-foreground">{selected.concept[language]}</p>
+              )}
+              <div>
+                <h4 className="text-lg font-semibold text-primary mb-4">{l.scope}</h4>
+                <ul className="space-y-2">
+                  {selected.scope[language].map((d) => (
+                    <li key={d} className="flex gap-3 text-foreground">
+                      <span className="text-accent font-bold min-w-fit">•</span>
+                      <span>{d}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              {selected.benefits && (
+                <div>
+                  <h4 className="text-lg font-semibold text-primary mb-4">{l.benefits}</h4>
+                  <ul className="space-y-2">
+                    {selected.benefits[language].map((b) => (
+                      <li key={b} className="flex gap-3 text-foreground">
+                        <Check size={18} className="text-accent flex-shrink-0 mt-1" />
+                        <span>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
               <Button onClick={() => onContact(selected.name[language])} className="w-full bg-primary hover:bg-primary/90 text-white">
                 {l.cta}
               </Button>
