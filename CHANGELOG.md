@@ -1,5 +1,13 @@
 # Changelog — Site institucional Adatta (www.adattati.com)
 
+## 2026-09-28 — Nuestro Equipo
+
+- Nova seção **Nuestro Equipo** (`client/src/components/Equipo.tsx`), logo depois de Sobre e antes de
+  Trayectoria, fora do menu: faixa azul-escura com 3 pessoas-chave (Adriano Alves, Stephanie Lay, Bruno
+  Henrique), sem fotos, com as iniciais em marca d'água. Layout do mockup
+  `adatta-site-com-imagens/Sobre - Pessoal Adatta.png`.
+- Outsourcing de Nómina: removido o "Vacaciones" duplicado do Alcance (ES/EN).
+
 ## 2026-09-28 — Textos de Productos e Asesoría padronizados
 
 - Productos: subtítulo, frase do card, detalhe (novo campo `detailEs/En`, exibido no modal) e lista
