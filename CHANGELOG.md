@@ -1,5 +1,11 @@
 # Changelog — Site institucional Adatta (www.adattati.com)
 
+## 2026-10-06 — Redes sociais
+
+- Contacto: card "Redes sociales" com LinkedIn (perfil `/in/adatta-tecnolog%C3%ADa-07ba9b65/`) e Instagram
+  `@ADATTATECNOLOGIASA`; os mesmos ícones no rodapé. Constantes `LINKEDIN_URL` e `INSTAGRAM_URL` no topo de
+  `Home.tsx`. Sem QR code.
+
 ## 2026-10-06 — Faixa do ecossistema e clientes
 
 - Productos: faixa **"Nuestro ecosistema para la construcción"** acima do carrossel

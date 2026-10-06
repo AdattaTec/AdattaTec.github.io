@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import {
   ArrowLeftRight, BarChart3, ChevronLeft, ChevronRight, ClipboardCheck, Cloud, Code2, Cpu, DatabaseZap, GraduationCap,
-  Headphones, Mail, MapPin, Menu, MessageCircle, MessagesSquare, Phone, Rocket, Settings, X, type LucideIcon,
+  Headphones, Instagram, Linkedin, Mail, MapPin, Menu, MessageCircle, MessagesSquare, Phone, Rocket, Settings, X, type LucideIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { TechSections } from "@/components/TechSections";
@@ -21,6 +21,9 @@ import { SuiteStrip } from "@/components/SuiteStrip";
 const CONTACT_EMAIL = "adatta@adattati.com";
 const CONTACT_PHONE = "+507-6115-2158";
 const WHATSAPP_NUMBER = "50761152158";
+const LINKEDIN_URL = "https://www.linkedin.com/in/adatta-tecnolog%C3%ADa-07ba9b65/";
+const INSTAGRAM_HANDLE = "ADATTATECNOLOGIASA";
+const INSTAGRAM_URL = "https://www.instagram.com/adattatecnologiasa/";
 
 const whatsappUrl = (text: string) => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
 const mailtoUrl = (subject: string) => `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}`;
@@ -1290,6 +1293,25 @@ export default function Home() {
                   </div>
                 </div>
               </div>
+
+              <div className="bg-white rounded-lg p-6 border border-border">
+                <div className="flex gap-4">
+                  <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Linkedin size={24} className="text-accent" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-foreground mb-1">{language === "es" ? "Redes sociales" : "Social media"}</h3>
+                    <div className="flex flex-col gap-1 text-sm">
+                      <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary">
+                        <Linkedin size={16} /> LinkedIn · Adatta Tecnología
+                      </a>
+                      <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary">
+                        <Instagram size={16} /> @{INSTAGRAM_HANDLE}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -1309,6 +1331,14 @@ export default function Home() {
               <p className="text-white/80 text-sm">
                 {t.footer.about}
               </p>
+              <div className="mt-4 flex gap-3">
+                <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-white/80 hover:text-white transition-colors">
+                  <Linkedin size={20} />
+                </a>
+                <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-white/80 hover:text-white transition-colors">
+                  <Instagram size={20} />
+                </a>
+              </div>
             </div>
             <div>
               <h4 className="font-semibold mb-4">{t.footer.products}</h4>
