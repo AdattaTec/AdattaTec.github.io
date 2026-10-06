@@ -1,5 +1,16 @@
 # Changelog — Site institucional Adatta (www.adattati.com)
 
+## 2026-10-06 — Faixa do ecossistema e clientes
+
+- Productos: faixa **"Nuestro ecosistema para la construcción"** acima do carrossel
+  (`client/src/components/SuiteStrip.tsx`): 12 ícones lucide no azul do site, cada um abre o "Saber Más";
+  sem molduras, traço vertical entre ícones só no desktop (no celular, grade 4×3 sem traços).
+- Productos: frase "Soluciones nacidas en la obra…" vira o último parágrafo da abertura.
+- Clientes: sai The Saltex Group; "FCC Construction - AMPA" → "Grupo FCC"; "Consorcio Corredor de Playa I" →
+  "Consorcio Corredor de Playas"; "III Puente Sobre el Río Orinoco" → "Puentes Sobre el Río Orinoco"; entram
+  ASCH, CHEC, Obrascón Huarte Lain (OHLA), VINCI Construction Grands Projets, ALSTOM Panamá, Colas Rail,
+  Contratistas Línea 3 – Metro de Panamá, Hyundai Engineering Co., OHLA Progress Enablers (27 no total).
+
 ## 2026-09-28 — Nuestro Equipo
 
 - Nova seção **Nuestro Equipo** (`client/src/components/Equipo.tsx`), logo depois de Sobre e antes de

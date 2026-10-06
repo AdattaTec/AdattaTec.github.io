@@ -8,6 +8,7 @@ import { TechSections } from "@/components/TechSections";
 import { Asesoria } from "@/components/Asesoria";
 import { Trayectoria } from "@/components/Trayectoria";
 import { Equipo } from "@/components/Equipo";
+import { SuiteStrip } from "@/components/SuiteStrip";
 
 /**
  * Design System: Minimalismo Corporativo Moderno
@@ -80,6 +81,7 @@ const translations = {
       paragraphs: [
         "Más que sistemas independientes, nuestras soluciones forman un ecosistema de datos para la construcción.",
         "Desde la captura de información en campo hasta nómina, costos, presupuestos, subcontratos, equipos, producción y calidad, ADATTA conecta procesos y datos para generar información confiable, trazabilidad y mejores decisiones durante todo el ciclo del proyecto.",
+        "Soluciones nacidas en la obra, desarrolladas a partir de necesidades reales de construcción.",
       ],
       tagline: "Tecnología + Construcción + Datos",
     },
@@ -158,6 +160,7 @@ const translations = {
       paragraphs: [
         "More than standalone systems, our solutions form a data ecosystem for construction.",
         "From field data capture to payroll, costs, budgets, subcontracts, equipment, production and quality, ADATTA connects processes and data to deliver reliable information, traceability and better decisions throughout the entire project lifecycle.",
+        "Solutions born on the job site, developed from real construction needs.",
       ],
       tagline: "Technology + Construction + Data",
     },
@@ -801,8 +804,8 @@ const clients = [
   "Grupo Unidos Por el Canal",
   "Consorcio Línea II del Metro de Panamá",
   "Proyecto Renovación Urbana de Colón",
-  "Consorcio Corredor de Playa I",
-  "FCC Construction - AMPA",
+  "Consorcio Corredor de Playas",
+  "Grupo FCC",
   "Agregados y Materiales de Panamá SA",
   "Terminal de Cruceros de Panamá",
   "Revitalización de Espacios Públicos de la Ciudad de Panamá",
@@ -811,12 +814,20 @@ const clients = [
   "Sacyr Construction",
   "Consorcio SH - Autopista Rumiñahui - Pasto",
   "Consorcio MAR1",
-  "The Saltex Group",
   "Consorcio OIV Tocoma",
   "Metro Los Teques Línea I y Línea II",
-  "III Puente Sobre el Río Orinoco",
+  "Puentes Sobre el Río Orinoco",
   "Proyecto El Diluvio Palmar",
   "Puente Nigale",
+  "ASCH Infraestructuras y Servicios",
+  "China Harbour Engineering Company (CHEC)",
+  "Obrascón Huarte Lain (OHLA)",
+  "VINCI Construction Grands Projets",
+  "ALSTOM Panamá, S.A.",
+  "Colas Rail",
+  "Contratistas Línea 3 – Metro de Panamá",
+  "Hyundai Engineering Co.",
+  "OHLA Progress Enablers",
 ];
 
 export default function Home() {
@@ -1015,6 +1026,15 @@ export default function Home() {
             </div>
             <p className="mt-4 text-sm md:text-base font-semibold tracking-wide text-accent">{t.products.tagline}</p>
           </div>
+
+          <SuiteStrip
+            language={language}
+            items={products.map((p) => ({
+              key: p.image!.match(/produtos\/([a-z]+)\./)![1],
+              name: p.nameEs.replace(/^Adatta /, ""),
+            }))}
+            onSelect={(key) => setSelectedProduct(products.find((p) => p.image!.includes(`/${key}.`)) ?? null)}
+          />
 
           <div className="relative">
             <div
