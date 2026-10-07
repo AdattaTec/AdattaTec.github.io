@@ -1,9 +1,8 @@
 
 /**
  * Linha do tempo única, usada na Trayectoria do site e na Experiencia da página /adriano (JourneyTimeline).
- * Textos do mockup "Trajetoria Arte - Adriano.png". Fotos etapa-1..3 recortadas do mockup; etapa-4..5 da arte
- * "Conectividade e cidades inteligentes em BIM". Ícones icono-1..5 = PNG recortados do mockup.
- * Nos tópicos, **texto** vira destaque (negrito azul) — usado para chamar atenção ao BIM.
+ * Textos do mockup "Trajetoria Arte - Adriano.png". Fotos etapa-1..5 = "OneDrive/Adatta/Adatta Tecnologia/imgs-trajetoria" (7:5, 700×500).
+ * Ícones icono-1..5 = PNG recortados do mockup.
  */
 
 type Lang = "es" | "en";
@@ -12,7 +11,6 @@ export interface JourneyStage {
   years: string;
   image: string;
   icon: string; // PNG recortado do mockup (fundo transparente)
-  imagePosition?: string; // foco da foto quando o quadro corta (ex.: manter Panamá / BIM visíveis)
   place: Record<Lang, string>;
   subtitle: Record<Lang, string>;
   projects: Record<Lang, string>;
@@ -23,7 +21,7 @@ export interface JourneyStage {
 export const journey: JourneyStage[] = [
   {
     years: "1998 – 2000",
-    image: "/images/trayectoria/etapa-1.webp",
+    image: "/images/trayectoria/etapa-1.webp?v=4",
     icon: "/images/trayectoria/icono-1.png",
     place: { es: "Brasil", en: "Brazil" },
     subtitle: { es: "Costos y Control", en: "Costs and Control" },
@@ -42,7 +40,7 @@ export const journey: JourneyStage[] = [
   },
   {
     years: "2001 – 2008",
-    image: "/images/trayectoria/etapa-2.webp",
+    image: "/images/trayectoria/etapa-2.webp?v=4",
     icon: "/images/trayectoria/icono-2.png",
     place: { es: "Venezuela", en: "Venezuela" },
     subtitle: { es: "Project Controls y Construcción", en: "Project Controls and Construction" },
@@ -64,7 +62,7 @@ export const journey: JourneyStage[] = [
   },
   {
     years: "2010 – 2012",
-    image: "/images/trayectoria/etapa-3.webp",
+    image: "/images/trayectoria/etapa-3.webp?v=4",
     icon: "/images/trayectoria/icono-3.png",
     place: { es: "Panamá", en: "Panama" },
     subtitle: { es: "Tracking, Automatización e Integración", en: "Tracking, Automation and Integration" },
@@ -83,8 +81,7 @@ export const journey: JourneyStage[] = [
   },
   {
     years: "2013 – 2020",
-    image: "/images/trayectoria/etapa-4.webp?v=2",
-    imagePosition: "object-top", // Panamá (origem das apps) sempre visível
+    image: "/images/trayectoria/etapa-4.webp?v=4",
     icon: "/images/trayectoria/icono-4.png",
     place: { es: "Expansión regional", en: "Regional expansion" },
     subtitle: { es: "Sistemas integrados y soluciones especializadas", en: "Integrated systems and specialized solutions" },
@@ -106,8 +103,7 @@ export const journey: JourneyStage[] = [
   },
   {
     years: "2021 – 2026",
-    image: "/images/trayectoria/etapa-5.webp?v=2",
-    imagePosition: "object-top", // BIM sempre visível
+    image: "/images/trayectoria/etapa-5.webp?v=4",
     icon: "/images/trayectoria/icono-5.png",
     place: { es: "Integración y evolución digital", en: "Digital integration and evolution" },
     subtitle: { es: "Nueva generación de soluciones", en: "A new generation of solutions" },
@@ -118,11 +114,11 @@ export const journey: JourneyStage[] = [
     bullets: {
       es: [
         "Consolidación de soluciones para Project Controls, campo, nómina, equipos, producción, calidad y datos.",
-        "Integración con BI, **BIM**, sensores e IoT, rumbo a Construction 4.0.",
+        "Integración con BI, BIM, sensores e IoT, rumbo a Construction 4.0.",
       ],
       en: [
         "Consolidation of solutions for Project Controls, field, payroll, equipment, production, quality and data.",
-        "Integration with BI, **BIM**, sensors and IoT, toward Construction 4.0.",
+        "Integration with BI, BIM, sensors and IoT, toward Construction 4.0.",
       ],
     },
     quote: { es: "Construyendo el futuro con datos", en: "Building the future with data" },

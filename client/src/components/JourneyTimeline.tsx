@@ -22,7 +22,7 @@ export function JourneyTimeline({ lang }: { lang: "es" | "en" }) {
       {journey.map((st) => (
         <li key={st.years} className="relative pl-6 md:pl-8 [&:not(:last-child)]:pb-4">
           <span className="absolute -left-[9px] top-5 h-4 w-4 rounded-full bg-sky-500 ring-4 ring-white" />
-          <div className="grid gap-4 rounded-xl border border-border bg-white p-3 md:grid-cols-[11rem_15rem_1fr] lg:grid-cols-[12rem_17rem_1fr_11rem] md:items-center md:p-4">
+          <div className="grid gap-4 rounded-xl border border-border bg-white p-3 md:grid-cols-[11rem_14rem_1fr] lg:grid-cols-[12rem_15rem_1fr_11rem] md:items-center md:p-4">
             <div className="md:pl-2">
               <p className="text-2xl font-bold text-primary leading-tight">{st.years}</p>
               <p className="text-lg font-bold text-primary leading-tight">{st.place[lang]}</p>
@@ -32,7 +32,7 @@ export function JourneyTimeline({ lang }: { lang: "es" | "en" }) {
               src={st.image}
               alt={st.place[lang]}
               loading="lazy"
-              className={`h-40 w-full rounded-lg object-cover md:h-36 ${st.imagePosition ?? ""}`}
+              className="aspect-[7/5] w-full rounded-lg object-cover"
             />
             <div>
               <p className="font-bold text-primary">{st.projects[lang]}</p>
