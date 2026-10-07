@@ -1,5 +1,17 @@
 # Changelog — Site institucional Adatta (www.adattati.com)
 
+## 2026-10-07 — Página pessoal /adriano
+
+- Nova página **www.adattati.com/adriano/** (perfil profissional do Adriano Alves), **não listada** no site e
+  com `noindex, nofollow`. Entrada própria do Vite (`client/adriano/index.html` + `client/src/adriano/`);
+  `vite.config.ts` passou a gerar as duas páginas (`build.rollupOptions.input`). O site principal não muda —
+  só o JS dele passou a se chamar `assets/main-*.js`.
+- ES/EN (`?lang=en` abre em inglês); topo com a arte "Engenheiro Observa Ponte ao Entardecer"; números;
+  perfil; documentos; Trayectoria Profesional própria (`journey.ts`, layout e fotos do mockup); banner
+  "Disponible…" com a arte "Cidade Costeira ao Entardecer"; rodapé com contatos pessoais.
+- Documentos em `client/public/adriano/docs/` com nome fixo por ID (CV-ES/EN/PT/IT, PORT ESP/ENG, REF1/REF2);
+  mapa ID → origem em `client/src/adriano/DOCUMENTOS.md`. Para atualizar: trocar o PDF e subir `DOCS_VERSION`.
+
 ## 2026-10-06 — Redes sociais
 
 - Contacto: card "Redes sociales" com LinkedIn (perfil `/in/adatta-tecnolog%C3%ADa-07ba9b65/`) e Instagram

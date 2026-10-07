@@ -220,6 +220,13 @@ export default defineConfig(({ command }) => ({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+    rollupOptions: {
+      // Página pessoal /adriano: entrada própria (não listada no site)
+      input: {
+        main: path.resolve(import.meta.dirname, "client", "index.html"),
+        adriano: path.resolve(import.meta.dirname, "client", "adriano", "index.html"),
+      },
+    },
   },
   server: {
     port: 3000,
