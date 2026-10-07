@@ -1,5 +1,14 @@
 # Changelog — Site institucional Adatta (www.adattati.com)
 
+## 2026-10-07 — Trayectoria unificada com a /adriano
+
+- A Trayectoria do site passa a usar a mesma linha do tempo da página /adriano: dados em
+  `client/src/components/journey.ts`, cards em `JourneyTimeline.tsx` (anos/lugar | foto | projetos + tópicos |
+  ícone + frase). Fotos `images/trayectoria/etapa-1..5.webp` e ícones `icono-1..5.png`; as fotos antigas saíram.
+- Mapa (2013–2020) inteiro com Panamá e Perú; cidade (2021–2026) com "BIM" inteiro; foco no topo da foto
+  (`imagePosition`) para não cortar no celular. "BIM" destacado no texto (`**texto**` vira destaque).
+- `robots.txt` com `Disallow: /adriano/`.
+
 ## 2026-10-07 — Página pessoal /adriano
 
 - Nova página **www.adattati.com/adriano/** (perfil profissional do Adriano Alves), **não listada** no site e
