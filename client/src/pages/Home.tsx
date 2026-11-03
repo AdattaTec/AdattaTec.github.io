@@ -908,6 +908,21 @@ export default function Home() {
 
 
 
+  // Link direto com âncora (ex.: /#productos): o navegador tenta rolar antes do React
+  // renderizar a seção, então não acha o alvo. Rola manualmente após montar e de novo
+  // quando as imagens terminam de carregar (elas empurram a posição da seção).
+  useEffect(() => {
+    const id = decodeURIComponent(window.location.hash.slice(1));
+    if (!id) return;
+    const go = () => document.getElementById(id)?.scrollIntoView({ behavior: "auto", block: "start" });
+    const raf = requestAnimationFrame(go);
+    window.addEventListener("load", go, { once: true });
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("load", go);
+    };
+  }, []);
+
   useEffect(() => {
     if (swipingRef.current) return;
     scrollToCard(productCarouselRef.current, productIndex);

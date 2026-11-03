@@ -1,5 +1,11 @@
 # Changelog — Site institucional Adatta (www.adattati.com)
 
+## 2026-11-02 — Links diretos para seções (#productos etc.)
+
+- Abrir `www.adattati.com/#productos` (ou qualquer âncora) agora rola direto até a seção. Antes o navegador
+  tentava rolar antes do React montar a página, não achava o alvo e ficava no topo. `Home.tsx` rola
+  manualmente após montar e de novo no `load` (imagens mudam a posição da seção).
+
 ## 2026-10-07 — Trayectoria unificada com a /adriano
 
 - A Trayectoria do site passa a usar a mesma linha do tempo da página /adriano: dados em
