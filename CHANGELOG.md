@@ -5,6 +5,8 @@
 - Abrir `www.adattati.com/#productos` (ou qualquer âncora) agora rola direto até a seção. Antes o navegador
   tentava rolar antes do React montar a página, não achava o alvo e ficava no topo. `Home.tsx` rola
   manualmente após montar e de novo no `load` (imagens mudam a posição da seção).
+- A lógica virou o hook `client/src/hooks/useScrollToHash.ts`, usado também na /adriano
+  (`/adriano/#experiencia` etc.), que é uma entrada separada do Vite e não tinha o ajuste.
 
 ## 2026-10-07 — Trayectoria unificada com a /adriano
 

@@ -4,6 +4,7 @@ import {
   MessageCircle, Plane, Settings, Target, UserCheck, Users, type LucideIcon,
 } from "lucide-react";
 import { JourneyTimeline } from "@/components/JourneyTimeline";
+import { useScrollToHash } from "@/hooks/useScrollToHash";
 
 /**
  * Página pessoal /adriano (não listada no site, noindex): perfil profissional do Adriano Alves.
@@ -220,6 +221,8 @@ export function AdrianoPage() {
   useEffect(() => {
     document.documentElement.lang = lang;
   }, [lang]);
+
+  useScrollToHash();
 
   return (
     <div className="min-h-screen bg-white text-foreground">
